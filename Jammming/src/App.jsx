@@ -18,6 +18,14 @@ function App() {
     zIndex: 1000
   }
 
+  const containerStyle = {
+    display: 'flex',
+    flexDirection: 'row', // or 'column' for vertical
+    gap: '200px',
+    justifyContent: 'center',
+    alignItems: 'flex-start'
+  };
+
   return (
     <>
       <header style={headerStyle}>
@@ -26,10 +34,11 @@ function App() {
         <p style={{ fontSize: '1.2em', margin: '0' }}>Search for your favorite songs and add them to your playlist!</p>
       </header>
 
-
       <SearchBar />
-      <SearchResults />
-      <Playlist />
+      <div style={containerStyle}>
+        <SearchResults />
+        <Playlist />
+      </div>
     </>
   )
 }
