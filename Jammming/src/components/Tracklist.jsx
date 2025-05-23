@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Track from "./Track";
 
-function TrackList({ tracks }) {
+function TrackList({ tracks, onAddToPlaylist }) {
   return (
     <div>
       {tracks.map(track => (
@@ -10,6 +10,7 @@ function TrackList({ tracks }) {
           name={track.name}
           artist={track.artist}
           album={track.album}
+          onAddToPlaylist={() => onAddToPlaylist(track)}
         />
       ))}
     </div>

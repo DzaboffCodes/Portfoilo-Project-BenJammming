@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 
-function Track({ name, artist, album }) {
+function Track({ name, artist, album, onAddToPlaylist }) {
 
     return (
         <div>
             <h3>{name}</h3>
             <p>{artist}</p>
             <p>{album}</p>
-            <button>+</button>
+            <button onClick={onAddToPlaylist}>+</button>
         </div>
     )
 };
