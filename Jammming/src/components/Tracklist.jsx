@@ -1,15 +1,19 @@
 import React, {useState} from "react";
 import Track from "./Track";
 
-function TrackList() {
-
-    return (
-        <div>
-            <Track />
-            {/* <Track />
-            <Track /> */}
-        </div>
-    )
-};
+function TrackList({ tracks }) {
+  return (
+    <div>
+      {tracks.map(track => (
+        <Track
+          key={track.id}
+          name={track.name}
+          artist={track.artist}
+          album={track.album}
+        />
+      ))}
+    </div>
+  );
+}
 
 export default TrackList;

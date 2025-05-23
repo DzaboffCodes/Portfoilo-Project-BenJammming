@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 
-function Track() {
+function Track({ name, artist, album }) {
 
     return (
         <div>
-            <h3>Song Title</h3>
-            <p>Artist</p>
-            <p>Album</p>
+            <h3>{name}</h3>
+            <p>{artist}</p>
+            <p>{album}</p>
             <button>+</button>
         </div>
     )
