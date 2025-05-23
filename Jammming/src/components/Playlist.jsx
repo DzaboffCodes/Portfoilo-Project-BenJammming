@@ -1,32 +1,38 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import TrackList from "./Tracklist";
 import '../App.css'
 
-function Playlist({playlistName, playlistTracks, handlePlaylistNameChange, handleRemoveTrack}) {
+function Playlist({ playlistName, playlistTracks, handlePlaylistNameChange, handleRemoveTrack }) {
+    const [editing, setEditing] = useState(false);
 
     return (
-        <div>
-            <h2>Create Your Playlist</h2>
-            <form className="form-style">
-                <input 
-                type='text' 
-                placeholder='Title of Playlist' 
-                className="input-style" 
-                value={playlistName} 
-                onChange={handlePlaylistNameChange}
-                />
-                {/* Display Playlist Tracks */}
-                <div>
-                    <TrackList 
-                    tracks={playlistTracks} 
-                    onRemoveFromPlaylist={handleRemoveTrack} 
-                    isInPlaylist={true}
+        <form className="form-style">
+            <div>
+                {editing ? (
+                    <input
+                        type='text'
+                        className="input-style"
+                        value={playlistName}
+                        onChange={handlePlaylistNameChange}
+                        onBlur={() => setEditing(false)}
+                        autoFocus
                     />
-                </div>
-                <button type='submit' className="button-style"> SAVE TO SPOTIFY </button>
-            </form>
-        </div>
-    )
-};
+                ) : (
+                    <h2 onClick={() => setEditing(true)}>
+                        {playlistName || "Create Your Playlist"}
+                    </h2>
+                )}
+            </div>
+            <div>
+                <TrackList
+                    tracks={playlistTracks}
+                    onRemoveFromPlaylist={handleRemoveTrack}
+                    isInPlaylist={true}
+                />
+            </div>
+            <button type='submit' className="button-style">SAVE TO SPOTIFY</button>
+        </form>
+    );
+}
 
 export default Playlist;

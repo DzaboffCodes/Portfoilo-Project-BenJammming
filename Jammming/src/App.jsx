@@ -26,7 +26,7 @@ function App() {
     }
   ]);
 
-  const [playlistName, setPlayListName] = useState("My Playlist");
+  const [playlistName, setPlayListName] = useState("");
   const handlePlaylistNameChange = (event) => {
     setPlayListName(event.target.value);
   }
