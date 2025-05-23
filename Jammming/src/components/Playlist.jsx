@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TrackList from "./Tracklist";
 import '../App.css'
 
-function Playlist({ playlistName, playlistTracks, handlePlaylistNameChange, handleRemoveTrack }) {
+function Playlist({ playlistName, playlistTracks, handlePlaylistNameChange, handleRemoveTrack,handleSavePlaylist }) {
     const [editing, setEditing] = useState(false);
 
     return (
@@ -30,7 +30,7 @@ function Playlist({ playlistName, playlistTracks, handlePlaylistNameChange, hand
                     isInPlaylist={true}
                 />
             </div>
-            <button type='submit' className="button-style">SAVE TO SPOTIFY</button>
+            <button type='submit' className="button-style" onClick={handleSavePlaylist}>SAVE TO SPOTIFY</button>
         </form>
     );
 }

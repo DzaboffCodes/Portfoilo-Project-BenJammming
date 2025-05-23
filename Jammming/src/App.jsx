@@ -10,19 +10,22 @@ function App() {
       id: 1,
       name: "Song 1",
       artist: "Artist 1",
-      album: "Album 1"
+      album: "Album 1",
+      uri: "spotify:track:1"
     },
     {
       id: 2,
       name: "Song 2",
       artist: "Artist 2",
-      album: "Album 2"
+      album: "Album 2",
+      uri: "spotify:track:2"
     },
     {
       id: 3,
       name: "Song 3",
       artist: "Artist 3",
-      album: "Album 3"
+      album: "Album 3",
+      uri: "spotify:track:3"
     }
   ]);
 
@@ -45,6 +48,16 @@ function App() {
   // handle removing a track from the playlist when the user clicks the - button
   const handleRemoveTrack = (track) => {
     setPlaylistTracks(playlistTracks.filter(playlistTrack => playlistTrack.id !== track.id));
+  }
+
+  // handle saving the playlist to Spotify
+  const handleSavePlaylist = () => {
+    const trackURIs = playlistTracks.map(track => track.uri);
+    // Call Spotify API to save the playlist with the given name and track URIs
+    console.log(`Saving playlist "${playlistName}" with tracks: ${trackURIs}`);
+    setPlayListName("");
+    setPlaylistTracks([]);
+    alert(`Playlist "${playlistName}" saved successfully!`);
   }
 
 
@@ -70,6 +83,7 @@ function App() {
           playlistTracks={playlistTracks}
           handlePlaylistNameChange={handlePlaylistNameChange}
           handleRemoveTrack={handleRemoveTrack}
+          handleSavePlaylist={handleSavePlaylist}
           />
         </div>
       </div>
