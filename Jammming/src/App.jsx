@@ -55,10 +55,12 @@ function App() {
         <p style={{ fontSize: '1.2em', margin: '0' }}>Search for your favorite songs and add them to your playlist!</p>
       </header>
 
-      <SearchBar />
-      <div style={containerStyle}>
-        <SearchResults tracks={mockTracks} />
-        <Playlist />
+      <div style={{paddingTop: '100px'}}>
+        <SearchBar />
+        <div style={containerStyle}>
+          <SearchResults tracks={mockTracks} />
+          <Playlist />
+        </div>
       </div>
     </>
   )
