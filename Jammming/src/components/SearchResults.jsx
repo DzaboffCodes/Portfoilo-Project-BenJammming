@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import TrackList from "./Tracklist";
 
-function SearchResults({tracks}) {
+function SearchResults({songInfo}) {
     
     return (
         <div>
             <h2>Results</h2>
-            <TrackList tracks={tracks}/>
+            <TrackList tracks={songInfo} />
         </div>
     )
 };

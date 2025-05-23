@@ -1,12 +1,11 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults'
 import Playlist from './components/Playlist'
 import './App.css'
 
 function App() {
-
-  const mockTracks = [
+  const [searchResults, setSearchResults] = useState([
     {
       id: 1,
       name: "Song 1",
@@ -25,7 +24,8 @@ function App() {
       artist: "Artist 3",
       album: "Album 3"
     }
-  ];
+  ]);
+
 
   const headerStyle = {
     width: '100%',
@@ -58,8 +58,8 @@ function App() {
       <div style={{paddingTop: '100px'}}>
         <SearchBar />
         <div style={containerStyle}>
-          <SearchResults tracks={mockTracks} />
-          <Playlist />
+          <SearchResults songInfo={searchResults} />
+          <Playlist songInfo={searchResults}/>
         </div>
       </div>
     </>

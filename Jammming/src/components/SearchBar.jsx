@@ -30,9 +30,7 @@ function SearchBar () {
 
     return (
         <form style={formStyle}>
-            <label>
-                <input type="text" placeholder="Enter A Song, Album, or Artist" style={inputStyle} />
-            </label>
+            <input type="text" placeholder="Enter A Song, Album, or Artist" style={inputStyle} />
             <button type="submit" style={buttonStyle}>SEARCH</button>
         </form>
     );
