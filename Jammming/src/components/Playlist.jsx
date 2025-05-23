@@ -1,7 +1,8 @@
 import React, {useState} from "react";
+import TrackList from "./Tracklist";
 import '../App.css'
 
-function Playlist({playlistName, playlistTracks, handlePlaylistNameChange, handlePlayTrackChange}) {
+function Playlist({playlistName, playlistTracks, handlePlaylistNameChange, handleRemoveTrack}) {
 
     return (
         <div>
@@ -16,9 +17,11 @@ function Playlist({playlistName, playlistTracks, handlePlaylistNameChange, handl
                 />
                 {/* Display Playlist Tracks */}
                 <div>
-                    {playlistTracks.map((track) => (
-                        <p key={track.id}>{track.name} - {track.artist}</p>
-                    ))}
+                    <TrackList 
+                    tracks={playlistTracks} 
+                    onRemoveFromPlaylist={handleRemoveTrack} 
+                    isInPlaylist={true}
+                    />
                 </div>
                 <button type='submit' className="button-style"> SAVE TO SPOTIFY </button>
             </form>

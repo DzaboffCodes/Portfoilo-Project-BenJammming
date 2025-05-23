@@ -42,6 +42,10 @@ function App() {
       alert("This track is already in your playlist!");
     }
   }
+  // handle removing a track from the playlist when the user clicks the - button
+  const handleRemoveTrack = (track) => {
+    setPlaylistTracks(playlistTracks.filter(playlistTrack => playlistTrack.id !== track.id));
+  }
 
 
   return (
@@ -65,6 +69,7 @@ function App() {
           playlistName={playlistName} 
           playlistTracks={playlistTracks}
           handlePlaylistNameChange={handlePlaylistNameChange}
+          handleRemoveTrack={handleRemoveTrack}
           />
         </div>
       </div>

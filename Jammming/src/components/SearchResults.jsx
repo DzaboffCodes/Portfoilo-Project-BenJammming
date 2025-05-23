@@ -6,7 +6,7 @@ function SearchResults({ tracks, onAddToPlaylist }) {
     return (
         <div>
             <h2>Results</h2>
-            <TrackList tracks={tracks} onAddToPlaylist={onAddToPlaylist}/>
+            <TrackList tracks={tracks} onAddToPlaylist={onAddToPlaylist} isInPlaylist={false}/>
         </div>
     )
 };
