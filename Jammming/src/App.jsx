@@ -31,6 +31,9 @@ function App() {
 
   const [playlistName, setPlayListName] = useState("");
   const handlePlaylistNameChange = (event) => {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+    // Update the playlist name when the user types in the input field
     setPlayListName(event.target.value);
   }
 
@@ -78,7 +81,6 @@ function App() {
           />
 
           <Playlist 
-          tracks={searchResults} 
           playlistName={playlistName} 
           playlistTracks={playlistTracks}
           handlePlaylistNameChange={handlePlaylistNameChange}

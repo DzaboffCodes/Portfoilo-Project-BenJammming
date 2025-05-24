@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import TrackList from "./Tracklist";
 
 function SearchResults({ tracks, onAddToPlaylist }) {
