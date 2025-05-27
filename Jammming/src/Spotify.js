@@ -1,0 +1,1 @@
+// This module handles interactions with the Spotify API, including searching for tracks, managing playlists, and saving them.

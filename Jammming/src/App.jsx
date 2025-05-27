@@ -1,10 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults'
 import Playlist from './components/Playlist'
 import './App.css'
 
+import { ensureSpotifyAuth } from './SpotifyAuth'
+import { getAccessToken } from './SpotifyAuth'
+
+
 function App() {
+
+  useEffect(() => {
+    // Ensure Spotify authentication is set up when the app loads
+    ensureSpotifyAuth().then(() => {
+      const token = getAccessToken();
+      console.log("Spotify Access Token:", token);
+    });
+  }, []);
+
   const [searchResults, setSearchResults] = useState([
     {
       id: 1,
