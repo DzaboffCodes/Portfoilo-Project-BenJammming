@@ -4,7 +4,7 @@
 
 
 const clientId = '8dcb1dbcb48b49e890666bb19ebca020';
-const redirectUri = "http://127.0.0.1:8080"
+const redirectUri = "https://875f-2604-2d80-d486-2400-b850-4229-f2bd-951c.ngrok-free.app";
 const scope = 'user-read-private user-read-email';
 
 function generateRandomString(length) {

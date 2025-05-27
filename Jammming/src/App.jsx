@@ -7,8 +7,20 @@ import './App.css'
 import { ensureSpotifyAuth } from './SpotifyAuth'
 import { getAccessToken } from './SpotifyAuth'
 
+import { searchTracks } from './Spotify'
+
 
 function App() {
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearch = async (searchTerm) => {
+    try {
+      const tracks = await searchTracks(searchTerm);
+      setSearchResults(tracks); // This updates the searchResults state
+    } catch (e) {
+      console.error('Spotify search failed:', e);
+    }
+  };
 
   useEffect(() => {
     // Ensure Spotify authentication is set up when the app loads
@@ -17,30 +29,6 @@ function App() {
       console.log("Spotify Access Token:", token);
     });
   }, []);
-
-  const [searchResults, setSearchResults] = useState([
-    {
-      id: 1,
-      name: "Song 1",
-      artist: "Artist 1",
-      album: "Album 1",
-      uri: "spotify:track:1"
-    },
-    {
-      id: 2,
-      name: "Song 2",
-      artist: "Artist 2",
-      album: "Album 2",
-      uri: "spotify:track:2"
-    },
-    {
-      id: 3,
-      name: "Song 3",
-      artist: "Artist 3",
-      album: "Album 3",
-      uri: "spotify:track:3"
-    }
-  ]);
 
   const [playlistName, setPlayListName] = useState("");
   const handlePlaylistNameChange = (event) => {
@@ -86,7 +74,8 @@ function App() {
       </header>
 
       <div style={{paddingTop: '100px'}}>
-        <SearchBar />
+        <SearchBar onSearch={handleSearch}/>
+        
         <div className="container-main">
           <SearchResults 
           tracks={searchResults} 
