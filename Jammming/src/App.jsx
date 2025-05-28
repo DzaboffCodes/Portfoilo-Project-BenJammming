@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults'
 import Playlist from './components/Playlist'
+import { getCurrentUserId, createPlaylist, addTracksToPlaylist } from './Spotify'
 import './App.css'
 
 import { ensureSpotifyAuth } from './SpotifyAuth'
@@ -55,13 +56,23 @@ function App() {
   }
 
   // handle saving the playlist to Spotify
-  const handleSavePlaylist = () => {
-    const trackURIs = playlistTracks.map(track => track.uri);
-    // Call Spotify API to save the playlist with the given name and track URIs
-    console.log(`Saving playlist "${playlistName}" with tracks: ${trackURIs}`);
-    setPlayListName("");
-    setPlaylistTracks([]);
-    alert(`Playlist "${playlistName}" saved successfully!`);
+  const handleSavePlaylist = async () => {
+    try {
+      const userId = await getCurrentUserId();
+      const trackUris = playlistTracks.map(track => track.uri);
+      const playlistId = await createPlaylist(userId, playlistName);
+      if (!playlistId) {
+        throw new Error('Playlist Id is undefined');
+      }
+      await addTracksToPlaylist(playlistId, trackUris);
+      alert(`Playlist "${playlistName}" saved successfully!`);
+      setPlaylistTracks([]); // Clear the playlist after saving
+      setPlayListName(""); // Reset the playlist name
+      alert(`Playlist "${playlistName}" saved successfully!`);
+    } catch (error) {
+      console.error('Error saving playlist:', error);
+      alert('Failed to save playlist. Please try again.');
+    }
   }
 
 
@@ -75,7 +86,7 @@ function App() {
 
       <div style={{paddingTop: '100px'}}>
         <SearchBar onSearch={handleSearch}/>
-        
+
         <div className="container-main">
           <SearchResults 
           tracks={searchResults} 

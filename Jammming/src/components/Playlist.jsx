@@ -6,10 +6,17 @@ function Playlist({ playlistName, playlistTracks, handlePlaylistNameChange, hand
     const [editing, setEditing] = useState(false);
 
     return (
-        <form className="form-style">
+        <form 
+        className="form-style"                 
+        onSubmit={e => {
+        e.preventDefault();
+        handleSavePlaylist();
+        }}>
             <div>
                 {editing ? (
                     <input
+                        id='playlistName'
+                        name='playlistName'
                         type='text'
                         className="input-style"
                         value={playlistName}
@@ -30,7 +37,10 @@ function Playlist({ playlistName, playlistTracks, handlePlaylistNameChange, hand
                     isInPlaylist={true}
                 />
             </div>
-            <button type='submit' className="button-style" onClick={handleSavePlaylist}>SAVE TO SPOTIFY</button>
+            <button 
+                type='submit' 
+                className="button-style" 
+                >SAVE TO SPOTIFY</button>
         </form>
     );
 }
