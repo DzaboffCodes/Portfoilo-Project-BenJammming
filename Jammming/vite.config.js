@@ -9,5 +9,6 @@ export default defineConfig({
       'localhost',
       '875f-2604-2d80-d486-2400-b850-4229-f2bd-951c.ngrok-free.app'
     ]
-  }
+  },
+  base: '/Portfoilo-Project-BenJammming/',
 })
