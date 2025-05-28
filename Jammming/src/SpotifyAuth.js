@@ -3,8 +3,8 @@
 // Extract the authorization code from the URL after redirection
 
 
-const clientId = '8dcb1dbcb48b49e890666bb19ebca020';
-const redirectUri = "https://875f-2604-2d80-d486-2400-b850-4229-f2bd-951c.ngrok-free.app";
+const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID
+const redirectUri = import.meta.env.VITE_SPOTIFY_REDIRECT_URI;
 const scope = 'user-read-private user-read-email playlist-modify-private playlist-modify-public playlist-read-collaborative user-library-read user-library-modify user-top-read user-follow-read user-follow-modify streaming app-remote-control user-read-playback-state user-modify-playback-state user-read-currently-playing';
 
 function generateRandomString(length) {
