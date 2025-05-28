@@ -58,6 +58,14 @@ function App() {
   // handle saving the playlist to Spotify
   const handleSavePlaylist = async () => {
     try {
+      if(!playlistName || playlistName.trim() === "") {
+        alert("Please enter a valid playlist name before saving.");
+        return;
+      }
+      if (playlistTracks.length === 0) {
+        alert("Your playlist is empty. Please add tracks before saving.");
+        return;
+      }
       const userId = await getCurrentUserId();
       const trackUris = playlistTracks.map(track => track.uri);
       const playlistId = await createPlaylist(userId, playlistName);
